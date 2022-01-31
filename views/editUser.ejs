@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard | MegaTradeFx</title>
+    <title>Dashboard | MegatradeFX</title>
 
     <!-- Fontfaces CSS-->
     <link href="/css/font-face.css" rel="stylesheet" media="all">
@@ -47,6 +47,9 @@
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
                 <div class="account2">
+                    <div class="image img-cir img-120">
+                        <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
+                    </div>
                     <a href="/signout">Sign out</a>
                 </div>
                 <nav class="navbar-sidebar2">
@@ -56,12 +59,8 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="/pending_deposit">
-                                </i>Pending Deposits</a>
-                        </li>
-                        <li>
-                            <a href="/pending_withdrawal">
-                                </i>Pending Withdrawal</a>
+                            <a href="/deposit">
+                                </i>Deposit</a>
                         </li>
                     </ul>
                 </nav>
@@ -96,6 +95,10 @@
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar2">
                     <div class="account2">
+                        <div class="image img-cir img-120">
+                            <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
+                        </div>
+                        <h4 class="name">john doe</h4>
                         <a href="/#">Sign out</a>
                     </div>
                     <nav class="navbar-sidebar2">
@@ -105,12 +108,8 @@
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="/pending_deposit">
-                                    </i>Pending Deposits</a>
-                            </li>
-                            <li>
-                                <a href="/pending_withdrawal">
-                                    </i>Pending Withdrawal</a>
+                                <a href="/deposit">
+                                    <i class="fas fa-tachometer-alt"></i>Deposit</a>
                             </li>
                         </ul>
                     </nav>
@@ -157,23 +156,33 @@
                             <input id="cc-name" name="balance" type="number" class="form-control cc-name valid" value="<%=customer.balance%>" required>
                         </div>
                         <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Profit</label>
-                            <input id="cc-name" name="profit" type="number" class="form-control cc-name valid" value="<%=customer.profit%>" required>
+                            <label for="cc-name" class="control-label mb-1">Total Earned(Profit)</label>
+                            <input id="cc-name" name="total_earned" type="number" class="form-control cc-name valid" value="<%=customer.total_earned%>" required>
                         </div>
                         <div class="form-group has-success">
-                            <label for="cc-name" class="control-label mb-1">Capital</label>
-                            <input id="cc-name" name="capital" type="number" class="form-control cc-name valid" value="<%=customer.capital%>" required>
+                            <label for="cc-name" class="control-label mb-1">Pending Balance</label>
+                            <input id="cc-name" name="pending" type="number" class="form-control cc-name valid" value="<%=customer.pending%>" required>
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Total Deposit</label>
+                            <input id="cc-name" name="total_deposit" type="number" class="form-control cc-name valid" value="<%=customer.total_deposit%>" required>
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Active Deposit</label>
+                            <input id="cc-name" name="active_deposit" type="number" class="form-control cc-name valid" value="<%=customer.last_balance%>" required>
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Total Withdraw</label>
+                            <input id="cc-name" name="total_withdraw" type="number" class="form-control cc-name valid" value="<%=customer.total_withdraw%>" required>
+                        </div>
+                        <div class="form-group has-success">
+                            <label for="cc-name" class="control-label mb-1">Withdrawer PIN</label>
+                            <input id="cc-name" name="pin" type="number" class="form-control cc-name valid" value="<%=customer.pin%>" required>
                         </div>
                         <div class="form-group has-success">
                             <label for="cc-name" class="control-label mb-1">Debt</label>
                             <input id="cc-name" name="debt" type="number" class="form-control cc-name valid" value="<%=customer.debt%>" required>
                         </div>
-                        <select class="form-select" name="verify_status" aria-label="" required>
-                            <option selected value="<%=customer.verify_status%>">Verify Status</option>
-                            <option value="unverified">unverified</option>
-                            <option value="pending">pending</option>
-                            <option value="verified">verified</option>
-                          </select>
                         <div class="form-group has-success">
                             <label for="cc-name" class="control-label mb-1">Acoount plan</label>
                             <input id="cc-name" name="account_plan" type="text" class="form-control cc-name valid" value="<%=customer.account_plan%>" required>
@@ -198,7 +207,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2021 MegaTradeFx.</p>
+                                <p>Copyright © 2022 MegatradeFX.</p>
                             </div>
                         </div>
                     </div>

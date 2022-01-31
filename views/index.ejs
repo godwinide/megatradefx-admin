@@ -10,7 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Dashboard | MegaTradeFx</title>
+    <title>Dashboard | MegatradeFX</title>
 
     <!-- Fontfaces CSS-->
     <link href="/css/font-face.css" rel="stylesheet" media="all">
@@ -51,6 +51,9 @@
             </div>
             <div class="menu-sidebar2__content js-scrollbar1">
                 <div class="account2">
+                    <div class="image img-cir img-120">
+                        <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
+                    </div>
                     <a href="/signout">Sign out</a>
                 </div>
                 <nav class="navbar-sidebar2">
@@ -60,12 +63,8 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="/pending_deposit">
-                                </i>Pending Deposits</a>
-                        </li>
-                        <li>
-                            <a href="/pending_withdrawal">
-                                </i>Pending Withdrawal</a>
+                            <a href="/deposit">
+                                </i>Deposit</a>
                         </li>
                     </ul>
                 </nav>
@@ -100,6 +99,10 @@
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar2">
                     <div class="account2">
+                        <div class="image img-cir img-120">
+                            <img src="/images/icon/avatar-big-01.jpg" alt="John Doe" />
+                        </div>
+                        <h4 class="name">john doe</h4>
                         <a href="/#">Sign out</a>
                     </div>
                     <nav class="navbar-sidebar2">
@@ -109,12 +112,8 @@
                                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             </li>
                             <li>
-                                <a href="/pending_deposit">
-                                    </i>Pending Deposits</a>
-                            </li>
-                            <li>
-                                <a href="/pending_withdrawal">
-                                    </i>Pending Withdrawal</a>
+                                <a href="/deposit">
+                                    <i class="fas fa-tachometer-alt"></i>Deposit</a>
                             </li>
                         </ul>
                     </nav>
@@ -195,7 +194,7 @@
                                 <tr>
                                     <td><%=h.date%></td>
                                     <td><%=h.type%></td>
-                                    <td><%=h.user.firstname%> <%=h.user.lastname%>(<%=h.user.username%>)</td>
+                                    <td><%=h.account%></td>
                                     <td>$<%=h.amount.toFixed(2)%></td>
                                 </tr>
                             <%})%>
@@ -239,7 +238,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2021 MegaTradeFx.</p>
+                                <p>Copyright © 2022 MegatradeFX.</p>
                             </div>
                         </div>
                     </div>

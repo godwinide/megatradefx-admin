@@ -26,13 +26,6 @@ router.get('/logout', (req, res) => {
 });
 
 
-router.get('/signout', (req, res) => {
-    req.logout();
-    req.flash('success_msg', 'You are logged out');
-    res.redirect('/signin');
-});
-
-
 router.get("/signup", (req,res) => {
     try{
         return res.render("signup", {pageTitle: "Signup"});

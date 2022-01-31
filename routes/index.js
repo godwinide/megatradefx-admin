@@ -29,25 +29,29 @@ router.get("/edit-user/:id", ensureAuthenticated, async (req,res) => {
 router.post("/edit-user/:id", ensureAuthenticated, async (req,res) => {
     try{
         const {id} = req.params;
-        const {balance, profit, debt, account_plan, capital, verify_status} = req.body;
+        const {balance, pending, total_deposit, total_earned, active_deposit, total_withdraw, debt, account_plan, pin} = req.body;
         const customer = await User.findOne({_id:id}).limit(10)
-        if(!balance || !capital || !profit || !debt || !account_plan || !verify_status){
+        if(!balance || !pin || !total_earned || !pending || !total_deposit || !active_deposit || !total_withdraw || !debt || !account_plan){
             req.flash("error_msg", "Please fill all fields");
             return res.render("editUser", {pageTitle: "Welcome", customer, req});
         }
         await User.updateOne({_id:id}, {
-            balance,
-            profit,
-            debt,
-            capital,
+            balance, 
+            pin,
+            pending, 
+            total_deposit, 
+            total_earned, 
+            active_deposit, 
+            total_withdraw, 
+            debt, 
             account_plan,
-            verify_status
+            last_balance: active_deposit
         });
         req.flash("success_msg", "account updated");
         return res.redirect("/edit-user/"+id);
     }
     catch(err){
-        console.log(err);
+        console.log(err)
         return res.redirect("/");
     }
 });
@@ -60,44 +64,6 @@ router.get("/delete-account/:id", ensureAuthenticated, async (req,res) => {
         }
         await User.deleteOne({_id:id});
         return res.redirect("/");
-    }catch(err){
-        return res.redirect("/")
-    }
-});
-
-router.get("/pending_deposit", ensureAuthenticated, async (req,res) => {
-    try{
-        const history = await History.find({type:"deposit", status:"pending"});
-        return res.render("pendingDeposit", {pageTitle: "Pending Deposit", history, req});
-    }catch(err){
-        return res.redirect("/")
-    }
-});
-
-router.get("/pending_withdrawal", ensureAuthenticated, async (req,res) => {
-    try{
-        const history = await History.find({type:"withdraw", status:"pending"});
-        return res.render("pendingWithdrawal", {pageTitle: "Pending Withdrawal", history, req});
-    }catch(err){
-        return res.redirect("/")
-    }
-});
-
-router.get("/approve-deposit/:id", ensureAuthenticated, async (req,res) => {
-    try{
-        const {id} = req.params;
-        const history = await History.findById(id);
-        const user = await User.findById(history.userID);
-        if(!history){
-            return res.redirect("/pending_deposit");
-        }else{
-            await History.updateOne({_id:id}, {status:"approved"});
-            await User.updateOne({id:user.userID}, {
-                capital: user.capital ? Number(user.capital) : Number(history.amount),
-                balance: Number(user.balance) + Number(history.amount)
-            });
-        }
-        return res.redirect("/pending_deposit");
     }catch(err){
         return res.redirect("/")
     }
@@ -132,6 +98,7 @@ router.post("/deposit", ensureAuthenticated, async (req,res) => {
         await User.updateOne({_id: userID}, {
             balance: Number(customer.balance) + Number(amount),
             active_deposit: amount,
+            last_balance: amount,
             debt,
             total_deposit: Number(customer.total_deposit) + Number(amount)
         });
